@@ -1,13 +1,39 @@
 stages:
   - test
+  - pages
 
 test:
-  image: node:latest
+  image: cypress/browsers:node12.14.1-chrome85-ff81
   stage: test
   script:
     # install dependencies
-    - npm ci
+    - npm ci 
     # start the server in the background
-    - npm run start:ci
+    - npm start & 
     # run Cypress tests
-    - npx cypress run --spec "cypress/integration/limits/**"
+    - npx cypress run --spec "cypress/integration/SmokeTest/**" --reporter mochawesome  --reporter-options reportDir=cypress/reports/mocha,overwrite=false,html=false,json=true,screenshotOnRunFailure=true
+  artifacts:
+    expire_in: 30 days
+    when: always
+    paths:
+      - cypress/reports/mocha
+      - cypress/reports/mochareports/assets
+
+
+pages:
+  image: cypress/browsers:node12.14.1-chrome85-ff81
+  stage: pages
+  script: 
+    # Generate Mochawesome report
+    - npx mochawesome-merge cypress/reports/mocha/*.json > cypress/reports/mochareports/report.json
+    - npx mochawesome-report-generator cypress/reports/mochareports/report.json -f index -o cypress/reports/mochareports --inline
+    # Rename mochareports to public
+    - mv cypress/reports/mochareports public
+  when: always
+  only: 
+   - main
+  artifacts:
+    expire_in: 30 days
+    when: always
+    paths:
+      - public
