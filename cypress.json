@@ -1,0 +1,35 @@
+{
+    "defaultCommandTimeout": 8000,
+    "pageLoadTimeout": 30000,
+    "reporter": "mochawesome",
+    "reporterOptions": {
+      
+        "reportDir": "cypress/reports/mocha",
+        "quite": true,
+        "overwrite": false,
+        "html": false,
+        "json": true
+    
+   },
+   "screenshotsFolder": "cypress/reports/mochareports/assets",
+   "video": false,
+   "screenshotOnRunFailure" : true,
+   "chromeWebSecurity": false,
+   "experimentalSessionAndOrigin": true,
+   
+    "env": {
+      "url": "https://rahulshettyacademy.com/angularpractice/",
+      "urlTest": "http://test.liptsoft.ru/auth",
+      "urlTestStg": "http://anyflow-stg.bankspb.ru",
+      "urli2bTest": "https://client.test.liptsoft.ru/",
+      "urli2BStg": "https://uzedo.bspb.ru"
+    },
+    "testFiles": "**/*.js",
+    "retries": {
+      "runMode": 1
+    },
+    "hosts": {
+      "client.test.liptsoft.ru": "192.168.128.244",
+      "mock.test.liptsoft.ru":"192.168.128.244"
+    }
+  }

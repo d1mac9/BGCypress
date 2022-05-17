@@ -1,0 +1,25 @@
+{
+    "login" : "demo", 
+    "pass" : "dundel#as#48",
+
+    "adminTest": "admin",
+    "CrManagerTest": "Yakov",
+    "HeadCrManagerTest": "pankovasn7",
+    "CrAnalystTest": "bessonovda",
+    "HeadCrAnalystTest": "Elkov",
+    "RKMandTestGroup": "Antonov",
+    "fullAdmin":"s-moos-ad",
+
+    "ABPstage": "gradinarovgv",
+    "CrManagerStg": "volmarev",
+    "HeadCrManagerStg": "montvilaytenv",
+    "CrAnalystStg": "mezheritskayael",
+    "HeadCrAnalystStg": "pevnevaok",
+
+    "INNLiptSoft": "7806530246",
+    "NameLiptSoft": "ООО \"ЛИПТ СОФТ\"",
+    "GroupOfCompaniesName": "Группа для автотестов",
+    "CompanyGroupCode": "11052022",
+    "dateStart":"13112022",
+    "dateEnd": "13112022"
+}
