@@ -6,7 +6,7 @@ import listOfCompanyGroups from '../../pageObjects/listOfCompanyGroups';
 import sidebar from '../../pageObjects/sidebar';
 
 
-describe ('FindIndLimit', function (){
+describe ('DeleteCompanyGr', function (){
 
   let data; 
   before(() => {  
@@ -23,7 +23,7 @@ Cypress.on('uncaught:exception', (err, runnable) => {
   return false
 })
 
-it ('FindIndLimit', function (){
+it ('DeleteCompanyGr', function (){
 
     const ListOfCompanyGroups = new listOfCompanyGroups()
     const AuthPage = new authPage()

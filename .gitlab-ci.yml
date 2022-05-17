@@ -10,4 +10,4 @@ test:
     # start the server in the background
     - npm run start:ci
     # run Cypress tests
-    - npx cypress run --spec "cypress/integration/**"
+    - npx cypress run --spec "cypress/integration/limits/**"

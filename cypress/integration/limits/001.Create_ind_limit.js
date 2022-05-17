@@ -54,8 +54,10 @@ CreateIndLimit.getAmount().type('100000')
 //Заполнить поля "Период действия"
 CreateIndLimit.getStartDate().type(data.dateStart)
 CreateIndLimit.getEndDate().type(data.dateEnd)
+
 //Заполнить поле "Клиент"
 CreateIndLimit.getClient().type(data.NameLiptSoft)
+
 //Выбрать компанию
 CreateIndLimit.getListOfCompany().click()
 

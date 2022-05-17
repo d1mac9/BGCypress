@@ -1,3 +1,18 @@
+import addContext from "mochawesome/addContext";
+
+Cypress.on('test:after:run', (test, runnable) => {
+
+  if (test.state === 'failed') {
+         const screenshot = `assets/${Cypress.spec.name}/${runnable.parent.title} -- ${test.title} (failed).png`;
+         addContext({ test }, screenshot); 
+  }
+
+
+
+});
+
+
+let value
 // ***********************************************************
 // This example support/index.js is processed and
 // loaded automatically before your test files.
@@ -13,8 +28,15 @@
 // https://on.cypress.io/configuration
 // ***********************************************************
 
+
+
 // Import commands.js using ES2015 syntax:
 import './commands'
+
+
+  
+
+
 
 // Alternatively you can use CommonJS syntax:
 // require('./commands')
