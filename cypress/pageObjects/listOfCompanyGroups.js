@@ -1,5 +1,9 @@
 class listOfCompanyGroups {
 
+    getResetFilter(){
+        return cy.get('button[type="reset"]')
+    }
+
     getTabGroupLimits() {
         return cy.get('.styles--padding_3OWWl').last()
     }

@@ -1,5 +1,8 @@
 class listOfIndLimits
 {
+    getResetFilter(){
+        return cy.get('button[type="reset"]')
+    }
 
     getButtonCreateIndLimit(){
         return cy.get('button[type="button"]')

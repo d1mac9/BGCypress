@@ -41,8 +41,11 @@ AuthPage.getSubmitButton().click()
 //Выбрать "Лимиты гарантий"
 Sidebar.getMenuItem().contains('Лимиты гарантий').click()
 
-//Нажать на кнопку "Создание группового лимита"
+//Перейти во вкладку "Групповые лимиты"
 ListOfGrLimits.getTabGroupLimits().should('contain.text', 'Групповые лимиты').click()
+
+//Проверка кнопки фильтра, что она заблокирована
+ListOfGrLimits.getResetFilter().should('be.disabled')
 
 // Заполнение поля "Компания"
 ListOfGrLimits.getCompanyFilter().type(data.NameLiptSoft)
@@ -62,6 +65,8 @@ ListOfGrLimits.getStartDateFilter().type(data.dateStart)
 // Заполнение поля "Период действия по"
 ListOfGrLimits.getEndDateFilter().type('12112022')
 
+// Проверка кнопки фильтра что она разблокирована
+ListOfGrLimits.getResetFilter().should('be.enabled')
 
 //Проверка текста при отсутствии результатов
 cy.wait(500)

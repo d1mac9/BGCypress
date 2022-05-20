@@ -41,8 +41,11 @@ AuthPage.getSubmitButton().click()
 //Выбрать "Лимиты гарантий"
 Sidebar.getMenuItem().contains('Лимиты гарантий').click()
 
-//Нажать на кнопку "Создание группового лимита"
+//Перейти во вкладку "Группы компаний"
 ListOfCompanyGroups.getTabGroupLimits().should('contain.text', 'Группы компаний').click()
+
+//Проверка кнопки фильтра, что она заблокирована
+ListOfCompanyGroups.getResetFilter().should('be.disabled')
 
 // Заполнение поля "Компания"
 ListOfCompanyGroups.getCompanyFilter().type(data.NameLiptSoft)
@@ -53,6 +56,8 @@ ListOfCompanyGroups.getGroupNameFilter().type(data.GroupOfCompaniesName)
 // Заполнение поля "Код"
 ListOfCompanyGroups.getCodeFilter().type('999946445')
 
+// Проверка кнопки фильтра что она разблокирована
+ListOfCompanyGroups.getResetFilter().should('be.enabled')
 
 // Проверка текста при отсутствии результатов
 cy.wait(500)

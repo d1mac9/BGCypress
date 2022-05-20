@@ -1,5 +1,9 @@
 class listOfGrLimits {
 
+    getResetFilter(){
+        return cy.get('button[type="reset"]')
+    }
+
     getTabGroupLimits(){
         return cy.get(':nth-child(2) > .tab-head-module_tab__WpYVI > div')
     }

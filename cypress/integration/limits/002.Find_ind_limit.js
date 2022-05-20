@@ -41,6 +41,9 @@ AuthPage.getSubmitButton().click()
 Sidebar.getMenuItem().contains('Лимиты гарантий').click()
 cy.wait(1000)
 
+//Проверка кнопки фильтра, что она заблокирована
+ListOfIndLimits.getResetFilter().should('be.disabled')
+
 // Заполнение поля "Компания"
 ListOfIndLimits.getCompanyFilter().type(data.NameLiptSoft)
 
@@ -56,6 +59,9 @@ ListOfIndLimits.getStartDateFilter().type(data.dateStart)
 // Заполнение поля "Период действия по"
 ListOfIndLimits.getEndDateFilter().type('12112022')
 cy.wait(1000)
+
+// Проверка кнопки фильтра что она разблокирована
+ListOfIndLimits.getResetFilter().should('be.enabled')
 
 //Проверка текста при отсутствии результатов
 ListOfIndLimits.getNoSearchResults().should('contain.text', 'По этому запросу ничего не найдено.')
