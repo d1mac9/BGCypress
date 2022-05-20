@@ -1,7 +1,7 @@
 /// <reference types="Cypress" />
 
 import authPage from '../../pageObjects/authPage';
-import listOfIndLimits from 'C:/Users/BSPB/Documents/Bank guarantee/cypress/pageObjects/listOfIndLimits.js'
+import listOfIndLimits from '../../pageObjects/listOfIndLimits.js'
 import sidebar from '../../pageObjects/sidebar';
 import indLimitDetails from '../../pageObjects/IndLimitDetails';
 
@@ -39,7 +39,7 @@ AuthPage.getSubmitButton().click()
 
 //Выбрать "Лимиты гарантий"
 Sidebar.getMenuItem().contains('Лимиты гарантий').click()
-
+cy.wait(1000)
 
 // Заполнение поля "Компания"
 ListOfIndLimits.getCompanyFilter().type(data.NameLiptSoft)
@@ -55,13 +55,14 @@ ListOfIndLimits.getStartDateFilter().type(data.dateStart)
 
 // Заполнение поля "Период действия по"
 ListOfIndLimits.getEndDateFilter().type('12112022')
+cy.wait(1000)
 
 //Проверка текста при отсутствии результатов
-cy.wait(500)
 ListOfIndLimits.getNoSearchResults().should('contain.text', 'По этому запросу ничего не найдено.')
 
 // Заполнение поля "Период действия по"
 ListOfIndLimits.getEndDateFilter().clear().type(data.dateEnd)
+cy.wait(1000)
 
 // Переход в детальную страницу индивидуального лимита
 ListOfIndLimits.getIndLimitDetailPage().children().first().click()

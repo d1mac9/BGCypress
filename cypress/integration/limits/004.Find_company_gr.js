@@ -2,7 +2,7 @@
 
 import authPage from '../../pageObjects/authPage';
 import listOfCompanyGroups from '../../pageObjects/listOfCompanyGroups';
-import companyGrDetails from '../../pageObjects/companyGrDetails';
+import companyGrParametrs from '../../pageObjects/companyGrParametrs';
 import sidebar from '../../pageObjects/sidebar';
 
 
@@ -27,7 +27,7 @@ it ('FindIndLimit', function (){
 
     const ListOfCompanyGroups = new listOfCompanyGroups()
     const AuthPage = new authPage()
-    const CompanyGrDetails = new companyGrDetails()
+    const CompanyGrParametrs = new companyGrParametrs()
     const Sidebar = new sidebar()
 
 
@@ -65,19 +65,19 @@ ListOfCompanyGroups.getCodeFilter().clear().type(data.CompanyGroupCode)
 ListOfCompanyGroups.getGrLimitDetailPage().children().first().click()
 
 // Проверка названия заголовка
-CompanyGrDetails.getHead().should('contain.text', 'Параметры группы компаний')
+CompanyGrParametrs.getHead().should('contain.text', 'Параметры группы компаний')
 
 // Проверка названия группы
-CompanyGrDetails.getGroupName().should('contain.value', data.GroupOfCompaniesName)
+CompanyGrParametrs.getGroupName().should('contain.value', data.GroupOfCompaniesName)
 
 // Проверка кода группы
-CompanyGrDetails.getGroupCode().should('contain.value', data.CompanyGroupCode)
+CompanyGrParametrs.getGroupCode().should('contain.value', data.CompanyGroupCode)
 
 // Проверка названия компании
-CompanyGrDetails.getCompanyName().should('contain.text', data.NameLiptSoft)
+CompanyGrParametrs.getCompanyName().should('contain.text', data.NameLiptSoft)
 
 // Проверка ИНН компании
-CompanyGrDetails.getCompanyInn().should('contain.text', data.INNLiptSoft)
+CompanyGrParametrs.getCompanyInn().should('contain.text', data.INNLiptSoft)
 
 })
 

@@ -66,7 +66,8 @@ DeleteModalWindow.getBtnDelete().click()
 DeleteModalWindow.getHeadModalDelete().click().should('contain.text', 'Удалить группу компаний?')
 
 //Проверка текста алерта в модальном окне удаления
-// DeleteModalWindow.getAlertModalDelete().click().should('contain.text', 'Вы собираетесь удалить группу [11052022] Группа для автотестов.Групповые лимиты перестанут действовать для компаний из состава. После удаления восстановить группу невозможно.')
+//\u00A0 - это не разрывной пробел, в DOM страницы = &nbsp;
+DeleteModalWindow.getAlertModalDelete().click().should('contain.text', `Вы собираетесь удалить группу\u00A0[${data.CompanyGroupCode}] ${data.GroupOfCompaniesName}.Групповые лимиты перестанут действовать\u00A0для компаний из состава. После удаления восстановить группу невозможно.`)
 
 //Нажать на удаление контекстного меню
 DeleteModalWindow.getSubmitModalDelete().click()

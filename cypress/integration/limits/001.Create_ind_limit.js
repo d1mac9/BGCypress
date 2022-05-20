@@ -2,7 +2,7 @@
 
 import authPage from '../../pageObjects/authPage';
 import createIndLimit from '../../pageObjects/createIndLimit';
-import listOfIndLimits from 'C:/Users/BSPB/Documents/Bank guarantee/cypress/pageObjects/listOfIndLimits.js'
+import listOfIndLimits from '../../pageObjects/listOfIndLimits.js'
 import sidebar from '../../pageObjects/sidebar';
 
 describe ('CreateIndLimit', function (){
@@ -46,7 +46,7 @@ ListOfIndLimits.getButtonCreateIndLimit().last().click()
 
 // проверка заголовков полей
 CreateIndLimit.getHead().should('contain.text', 'Создание индивидуального лимита')
-
+cy.wait(1000)
 
 //Заполнить поле "Сумма лимита"
 CreateIndLimit.getAmount().type('100000')
@@ -57,6 +57,7 @@ CreateIndLimit.getEndDate().type(data.dateEnd)
 
 //Заполнить поле "Клиент"
 CreateIndLimit.getClient().type(data.NameLiptSoft)
+cy.wait(2000)
 
 //Выбрать компанию
 CreateIndLimit.getListOfCompany().click()

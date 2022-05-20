@@ -62,17 +62,18 @@ CreateCompanyGr.getGrCode().type(data.CompanyGroupCode)
 
 //Заполнить поле "Выбор компаний"
 CreateCompanyGr.getCompaniesSearch().type(data.NameLiptSoft)
-cy.wait(1000)
+cy.wait(2000)
 
 //Выбрать компанию
 CreateCompanyGr.getListOfCompany().click()
-cy.wait(1000)
 
 //Нажать "Выбрать"
 CreateCompanyGr.getBtnChoose().click()
+cy.wait(2000)
 
 //Нажать на кнопку "Создать группу"
 CreateCompanyGr.getBtnCreateGroup().click()
+cy.wait(1000)
 
 //Проверка заголовка страницы
 GrLimitDetails.getHead().should('contain.text', 'Лимиты группы компаний')
@@ -90,7 +91,7 @@ GrLimitDetails.getCountOfCompanies().should('contain.text', '1')
 GrLimitDetails.getAccordeonTab().click()
 
 //Проверить название компании
-GrLimitDetails.getСomposition().should('contain.text', '[ИНН: 7806530246] ООО \"ЛИПТ СОФТ\"')
+GrLimitDetails.getСomposition().should('contain.text', `[ИНН: ${data.INNLiptSoft}] ${data.NameLiptSoft}`)
 })
 
 })

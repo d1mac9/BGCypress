@@ -89,7 +89,7 @@ GrLimitDetails.getCountOfCompanies().should('contain.text', '1')
 GrLimitDetails.getAccordeonTab().click()
 
 //Проверка названия и ИНН компании
-GrLimitDetails.getСomposition().should('contain.text', '[ИНН: 7806530246] ООО \"ЛИПТ СОФТ\"')
+GrLimitDetails.getСomposition().should('contain.text', `[ИНН: ${data.INNLiptSoft}] ${data.NameLiptSoft}`)
 })
 
 })
