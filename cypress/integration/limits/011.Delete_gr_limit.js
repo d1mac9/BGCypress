@@ -4,6 +4,7 @@ import authPage from '../../pageObjects/authPage';
 import listOfGrLimits from '../../pageObjects/listOfGrLimits';
 import deleteModalWindow from '../../pageObjects/deleteModalWindow';
 import sidebar from '../../pageObjects/sidebar';
+import contextMenu from '../../pageObjects/contextMenu';
 
 
 describe ('DeleteGrLimit', function (){
@@ -29,6 +30,7 @@ it ('DeleteGrLimit', function (){
     const AuthPage = new authPage()
     const DeleteModalWindow = new deleteModalWindow()
     const Sidebar = new sidebar()
+    const ContextMenu = new contextMenu()
 
 
   cy.visit( Cypress.env('urlTestStg'))
@@ -51,10 +53,10 @@ ListOfGrLimits.getCompanyFilter().type(data.NameLiptSoft)
 ListOfGrLimits.getGroupOfCompaniesFilter().type(data.GroupOfCompaniesName)
 
 // Заполнение поля "Мин. сумма лимита"
-ListOfGrLimits.getMinAmountFilter().type('100000')
+ListOfGrLimits.getMinAmountFilter().type(data.SumLimit)
 
 // Заполнение поля "Макс. сумма лимита"
-ListOfGrLimits.getMaxAmountFilter().type('100000')
+ListOfGrLimits.getMaxAmountFilter().type(data.SumLimit)
 
 // Заполнение поля "Период действия с"
 ListOfGrLimits.getStartDateFilter().type(data.dateStart)
@@ -69,16 +71,16 @@ ListOfGrLimits.getEndDateFilter().type(data.dateEnd)
 cy.wait(2000)
 
 //Нажать на вызов контекстного меню
-DeleteModalWindow.getBtnMenu().click({force: true})
+ContextMenu.getBtnMenu().click({force: true})
 
 //Нажать на удаление контекстного меню
-DeleteModalWindow.getBtnDelete().click()
+ContextMenu.getBtnDelete().click()
 
 //Проверка заголовка в модальном окне удаления
-DeleteModalWindow.getHeadModalDelete().click().should('contain.text', 'Удалить групповой лимит?')
+DeleteModalWindow.getHeadModalDelete().should('contain.text', 'Удалить групповой лимит?')
 
 //Проверка текста алерта в модальном окне удаления
-DeleteModalWindow.getAlertModalDelete().click().should('contain.text', 'После удаления восстановить лимит будет невозможно. Лимит перестанет действовать, и все данные о нём будут удалены из системы.')
+DeleteModalWindow.getAlertModalDelete().should('contain.text', 'После удаления восстановить лимит будет невозможно. Лимит перестанет действовать, и все данные о нём будут удалены из системы.')
 
 //Нажать на удаление контекстного меню
 DeleteModalWindow.getSubmitModalDelete().click()

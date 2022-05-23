@@ -2,7 +2,7 @@
 
 import authPage from '../../pageObjects/authPage';
 import createIndLimit from '../../pageObjects/createIndLimit';
-import listOfIndLimits from '../../pageObjects/listOfIndLimits.js'
+import listOfIndLimits from '../../pageObjects/listOfIndLimits';
 import sidebar from '../../pageObjects/sidebar';
 
 describe ('CreateIndLimit', function (){
@@ -49,7 +49,7 @@ CreateIndLimit.getHead().should('contain.text', 'Создание индивид
 cy.wait(1000)
 
 //Заполнить поле "Сумма лимита"
-CreateIndLimit.getAmount().type('100000')
+CreateIndLimit.getAmount().type(data.SumLimit)
 
 //Заполнить поля "Период действия"
 CreateIndLimit.getStartDate().type(data.dateStart)

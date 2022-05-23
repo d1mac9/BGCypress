@@ -6,7 +6,7 @@ import companyGrParametrs from '../../pageObjects/companyGrParametrs';
 import sidebar from '../../pageObjects/sidebar';
 
 
-describe ('FindIndLimit', function (){
+describe ('FindCompanyGr', function (){
 
   let data; 
   before(() => {  
@@ -23,7 +23,7 @@ Cypress.on('uncaught:exception', (err, runnable) => {
   return false
 })
 
-it ('FindIndLimit', function (){
+it ('FindCompanyGr', function (){
 
     const ListOfCompanyGroups = new listOfCompanyGroups()
     const AuthPage = new authPage()
@@ -73,10 +73,10 @@ ListOfCompanyGroups.getGrLimitDetailPage().children().first().click()
 CompanyGrParametrs.getHead().should('contain.text', 'Параметры группы компаний')
 
 // Проверка названия группы
-CompanyGrParametrs.getGroupName().should('contain.value', data.GroupOfCompaniesName)
+CompanyGrParametrs.getGrName().should('contain.value', data.GroupOfCompaniesName)
 
 // Проверка кода группы
-CompanyGrParametrs.getGroupCode().should('contain.value', data.CompanyGroupCode)
+CompanyGrParametrs.getGrCode().should('contain.value', data.CompanyGroupCode)
 
 // Проверка названия компании
 CompanyGrParametrs.getCompanyName().should('contain.text', data.NameLiptSoft)

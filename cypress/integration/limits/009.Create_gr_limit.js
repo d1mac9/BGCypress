@@ -51,7 +51,7 @@ CreateGrLimit.getHead().should('contain.text', 'Создание группов�
 
 
 //Заполнить поле "Сумма лимита"
-CreateGrLimit.getAmount().type('100000')
+CreateGrLimit.getAmount().type(data.SumLimit)
 
 //Заполнить поля "Период действия"
 CreateGrLimit.getStartDate().type(data.dateStart)

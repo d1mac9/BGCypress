@@ -1,9 +1,10 @@
 /// <reference types="Cypress" />
 
 import authPage from '../../pageObjects/authPage';
-import listOfIndLimits from 'C:/Users/BSPB/Documents/Bank guarantee/cypress/pageObjects/listOfIndLimits.js'
+import listOfIndLimits from '../../pageObjects/listOfIndLimits'
 import sidebar from '../../pageObjects/sidebar';
 import deleteModalWindow from '../../pageObjects/deleteModalWindow';
+import contextMenu from '../../pageObjects/contextMenu';
 
 describe ('DeleteIndLimit', function (){
 
@@ -28,6 +29,7 @@ it ('DeleteIndLimit', function (){
   const AuthPage = new authPage()
   const Sidebar = new sidebar()
   const DeleteModalWindow = new deleteModalWindow()
+  const ContextMenu = new contextMenu()
 
 
   cy.visit( Cypress.env('urlTestStg'))
@@ -45,30 +47,30 @@ Sidebar.getMenuItem().contains('Лимиты гарантий').click()
 ListOfIndLimits.getCompanyFilter().type(data.NameLiptSoft)
 
 // Заполнение поля "Мин. сумма лимита"
-ListOfIndLimits.getMinAmountFilter().type('100000')
+ListOfIndLimits.getMinAmountFilter().type(data.SumLimitChanged)
 
 // Заполнение поля "Макс. сумма лимита"
-ListOfIndLimits.getMaxAmountFilter().type('100000')
+ListOfIndLimits.getMaxAmountFilter().type(data.SumLimitChanged)
 
 // Заполнение поля "Период действия с"
-ListOfIndLimits.getStartDateFilter().type(data.dateStart)
+ListOfIndLimits.getStartDateFilter().type(data.dateStartChanged)
 
 // Заполнение поля "Период действия по"
-ListOfIndLimits.getEndDateFilter().type(data.dateEnd)
+ListOfIndLimits.getEndDateFilter().type(data.dateEndChanged)
 
 cy.wait(2000)
 
 //Нажать на вызов контекстного меню
-DeleteModalWindow.getBtnMenu().click({force: true})
+ContextMenu.getBtnMenu().click({force: true})
 
 //Нажать на удаление контекстного меню
-DeleteModalWindow.getBtnDelete().click()
+ContextMenu.getBtnDelete().click()
 
 //Проверка заголовка в модальном окне удаления
-DeleteModalWindow.getHeadModalDelete().click().should('contain.text', 'Удалить индивидуальный лимит?')
+DeleteModalWindow.getHeadModalDelete().should('contain.text', 'Удалить индивидуальный лимит?')
 
 //Проверка текста алерта в модальном окне удаления
-DeleteModalWindow.getAlertModalDelete().click().should('contain.text', 'После удаления восстановить лимит будет невозможно. Лимит перестанет действовать, и все данные о нём будут удалены из системы.')
+DeleteModalWindow.getAlertModalDelete().should('contain.text', 'После удаления восстановить лимит будет невозможно. Лимит перестанет действовать, и все данные о нём будут удалены из системы.')
 
 //Нажать на удаление контекстного меню
 DeleteModalWindow.getSubmitModalDelete().click()

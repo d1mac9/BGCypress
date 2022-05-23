@@ -54,10 +54,10 @@ ListOfGrLimits.getCompanyFilter().type(data.NameLiptSoft)
 ListOfGrLimits.getGroupOfCompaniesFilter().type(data.GroupOfCompaniesName)
 
 // Заполнение поля "Мин. сумма лимита"
-ListOfGrLimits.getMinAmountFilter().type('100000')
+ListOfGrLimits.getMinAmountFilter().type(data.SumLimit)
 
 // Заполнение поля "Макс. сумма лимита"
-ListOfGrLimits.getMaxAmountFilter().type('100000')
+ListOfGrLimits.getMaxAmountFilter().type(data.SumLimit)
 
 // Заполнение поля "Период действия с"
 ListOfGrLimits.getStartDateFilter().type(data.dateStart)
@@ -82,10 +82,10 @@ ListOfGrLimits.getGrLimitDetailPage().children().first().click()
 GrLimitDetails.getHead().should('contain.text', 'Лимиты группы компаний')
 
 //Проверка названия группы
-GrLimitDetails.getGroupName().should('contain.text', data.GroupOfCompaniesName)
+GrLimitDetails.getGroupName().should('contain.text', data.GroupOfCompaniesNameChanged)
 
 //Проверка кода группы
-GrLimitDetails.getGrCode().should('contain.text', data.CompanyGroupCode)
+GrLimitDetails.getGrCode().should('contain.text', data.CompanyGroupCodeChanged)
 
 //Проверка кол-ва компаний
 GrLimitDetails.getCountOfCompanies().should('contain.text', '1')

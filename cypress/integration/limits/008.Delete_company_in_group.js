@@ -51,10 +51,10 @@ cy.wait(2000)
 ListOfCompanyGroups.getCompanyFilter().type(data.NameLiptSoft)
 
 // Заполнение поля "Название"
-ListOfCompanyGroups.getGroupNameFilter().type(data.GroupOfCompaniesName)
+ListOfCompanyGroups.getGroupNameFilter().type(data.GroupOfCompaniesNameChanged)
 
 // Заполнение поля "Код"
-ListOfCompanyGroups.getCodeFilter().type(data.CompanyGroupCode)
+ListOfCompanyGroups.getCodeFilter().type(data.CompanyGroupCodeChanged)
 cy.wait(3000)
 
 // Переход в детальную страницу группы компаний
@@ -69,7 +69,7 @@ DeleteModalWindow.getHeadModalDelete().click().should('contain.text', 'Удал�
 
 //Проверка текста алерта в модальном окне удаления
 //\u00A0 - это не разрывной пробел, в DOM страницы = &nbsp;
-DeleteModalWindow.getAlertModalDelete().click().should('contain.text', `Компания [ИНН: ${data.INNZenit}]\u00A0${data.NameZenit}\u00A0больше не будет входить в группу\u00A0${data.GroupOfCompaniesName}.`)
+DeleteModalWindow.getAlertModalDelete().click().should('contain.text', `Компания [ИНН: ${data.INNZenit}]\u00A0${data.NameZenit}\u00A0больше не будет входить в группу\u00A0${data.GroupOfCompaniesNameChanged}.`)
 
 //Проверка заголовка текстового поля
 DeleteModalWindow.getTextReasonLabel().should('contain.text', 'Причина удаления')

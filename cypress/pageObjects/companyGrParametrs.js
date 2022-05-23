@@ -4,12 +4,44 @@ class companyGrParametrs{
         return cy.get('.groupCompaniesDetail--title_5o1gI')
     }
 
-    getGroupName(){
+    getGrName(){
         return cy.get('input[name="name"]')
     }
 
-    getGroupCode(){
+    getGrCode(){
         return cy.get('input[name="code"]')
+    }
+    
+    getBtnEditGroup(){
+        return cy.get('.groupComponents--button_3Jlqa').children()
+    }
+
+    getAlert(){
+        return cy.get('.styles--alert-text_3DzaA')
+    }
+
+    getLabelGrName(){
+        return cy.get('.groupComponents--input-container_vq9E1 > :nth-child(1) > .labelText--label-text_1fHCM > :nth-child(1)')
+    }
+
+    getHintGrName(){
+        return cy.get(':nth-child(1) > .formInputWrap--helper-text_3r4eP')
+    }
+
+    getLabelGrCode(){
+        return cy.get(':nth-child(2) > .labelText--label-text_1fHCM > :nth-child(1)')
+    }
+
+    getHintGrCode(){
+        return cy.get(':nth-child(2) > .formInputWrap--helper-text_3r4eP')
+    }
+
+    getLabelReason(){
+        return cy.get('.groupComponents--textarea-block_3UncF > div > .labelText--label-text_1fHCM > :nth-child(1)')
+    }
+
+    getReason(){
+        return cy.get('textarea[name="reason"]')
     }
 
     getCompanyName(){
@@ -20,20 +52,12 @@ class companyGrParametrs{
         return cy.get('.styles--table-body_3f45- > .styles--table-row_1Om7f > :nth-child(2)')
     }
 
-    getBtnEditGroup(){
-        return cy.get('')
-    }
-
     getBtnDeleteGroup(){
         return cy.get('')
     }
 
     getBtnAddCompany(){
         return cy.get('.button-module_secondary__Sx2AO').last()
-    }
-
-    getSubtitle(){
-        return cy.get('')
     }
 
     getHistory(){

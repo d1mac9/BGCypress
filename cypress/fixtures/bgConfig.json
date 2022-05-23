@@ -20,8 +20,14 @@
     "NameLiptSoft": "ООО \"ЛИПТ СОФТ\"",
     "GroupOfCompaniesName": "Группа для автотестов",
     "CompanyGroupCode": "11052022",
-    "dateStart":"13112022",
-    "dateEnd": "13112022",
+    "dateStart":"13/11/2022",
+    "dateEnd": "13/11/2022",
     "INNZenit": "0278007538",
-    "NameZenit": "ОАО \"ЗЕНИТ\""
+    "NameZenit": "ОАО \"ЗЕНИТ\"",
+    "dateStartChanged": "14/11/2022",
+    "dateEndChanged": "14/11/2022",
+    "SumLimit": "100000",
+    "SumLimitChanged": "100000.01",
+    "GroupOfCompaniesNameChanged":"Группа для автотестов_изменено",
+    "CompanyGroupCodeChanged": "22052022"
 }

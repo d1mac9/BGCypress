@@ -1,7 +1,7 @@
 /// <reference types="Cypress" />
 
 import authPage from '../../pageObjects/authPage';
-import listOfIndLimits from '../../pageObjects/listOfIndLimits.js'
+import listOfIndLimits from '../../pageObjects/listOfIndLimits';
 import sidebar from '../../pageObjects/sidebar';
 import indLimitDetails from '../../pageObjects/IndLimitDetails';
 
@@ -48,10 +48,10 @@ ListOfIndLimits.getResetFilter().should('be.disabled')
 ListOfIndLimits.getCompanyFilter().type(data.NameLiptSoft)
 
 // Заполнение поля "Мин. сумма лимита"
-ListOfIndLimits.getMinAmountFilter().type('100000')
+ListOfIndLimits.getMinAmountFilter().type(data.SumLimit)
 
 // Заполнение поля "Макс. сумма лимита"
-ListOfIndLimits.getMaxAmountFilter().type('100000')
+ListOfIndLimits.getMaxAmountFilter().type(data.SumLimit)
 
 // Заполнение поля "Период действия с"
 ListOfIndLimits.getStartDateFilter().type(data.dateStart)
