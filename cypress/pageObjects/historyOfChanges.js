@@ -1,7 +1,7 @@
 class historyOfChanges {
 
     getHead(){
-        return cy.get('.modal--header_2KfOM')
+        return cy.get('[data-cypress-element="limits-modal-title"]')
     }
 
     getDate(){

@@ -1,7 +1,7 @@
 class createGrLimit {
     
     getHead(){
-        return cy.get('.create--title_1wKRW')
+        return cy.get('[class^=create--title_]')
     }
     
     getAmount(){
@@ -25,7 +25,7 @@ class createGrLimit {
     }
 
     getListOfCompany(){
-        return cy.get('.list-item--wrapper_1IF_Z')
+        return cy.get('[class^=list-item--wrapper_]')
     }
 
 }

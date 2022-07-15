@@ -1,39 +1,39 @@
 class addCompanyInGr{
 
     getHead() {
-        return cy.get('.groupCreate--title_FStYD')
+        return cy.get('[class^=groupCreate--title_]')
     }
 
     getCompanyChoose(){
-        return cy.get('.companiesSearch--ids-input_2ofOS > div > .input-module_input__3SpIc')
+        return cy.get('.formInputWrap--input-wrap_3WO-4 > .input-module_input__3SpIc')
     }
 
     getListOfCompany(){
-        return cy.get('.list--list-item_5a8jG')
+        return cy.get('[class^=list--list-item_]')
     }
 
     getBtnChoose(){
-        return cy.get('.companiesSearch--add-button_2ttDT')
+        return cy.get('[class^=companiesSearch--add-button_]')
     }
 
     getCompanyColumnName(){
-        return cy.get('.styles--table-header_srbuR').first()
+        return cy.get('[class^=styles--table-header_]').first()
 
     }
     getInnColumnName(){
-        return cy.get('.styles--table-header_srbuR').last()
+        return cy.get('[class^=styles--table-header_]').last()
     }
 
     getCompanyName(){
-        return cy.get('.companiesBatch--company-name-link_31a_p')
+        return cy.get('[class^=companiesBatch--company-name-link_]')
     }
 
     getCompanyInn(){
-        return cy.get('.styles--table-body_3f45- > .styles--table-row_1Om7f > :nth-child(2)')
+        return cy.get('[class^=styles--table-body_] > [class^=styles--table-row_] > :nth-child(2)')
     }
 
     getBtnDeleteCompany(){
-        return cy.get('.styles--table-button_15Ijm')
+        return cy.get('.styles--table-button_3UXU7')
     }
 
     getCommentLabel(){
@@ -45,7 +45,7 @@ class addCompanyInGr{
     }
 
     getBtnCreateGr(){
-        return cy.get('.groupCreate--create-button_1umq8')
+        return cy.get('[class^=groupCreate--create-button_]')
     }
 }
 export default addCompanyInGr

@@ -42,7 +42,7 @@ Sidebar.getMenuItem().contains('Лимиты гарантий').click()
 
 //Нажать на кнопку "Создание индивидуального лимита"
 cy.wait(2000)
-ListOfIndLimits.getButtonCreateIndLimit().last().click()
+ListOfIndLimits.getButtonCreateIndLimit().click()
 
 // проверка заголовков полей
 CreateIndLimit.getHead().should('contain.text', 'Создание индивидуального лимита')
@@ -66,7 +66,7 @@ CreateIndLimit.getListOfCompany().click()
 CreateIndLimit.getButtonCreateIndLimit().click()
 
 //Открылась страница индивидуальных лимитов
-cy.url().should('eq', Cypress.env('urlTestStg') + '/limits/principal-limits')
+cy.url().should('contains', Cypress.env('urlTestStg') + '/limits/principal-limits').and('not.contain','/create')
 
 })
 

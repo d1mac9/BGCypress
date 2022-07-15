@@ -1,23 +1,23 @@
 class сhangeLimitModal {
 
     getHead(){
-        return cy.get('.modal--header_2KfOM')
+        return cy.get('[data-cypress-element="limits-modal-title"]')
     }
 
     getClientLabel(){
-        return cy.get('.style--label_1Pc7X')
+        return cy.get('[data-cypress-element="limits-modal-client-label"]')
     }
 
     getCompanyName(){
-        return cy.get('.style--name_3Lg7w')
+        return cy.get('[data-cypress-element="limits-modal-client-link"]')
     }
 
     getCompanyInn(){
-        return cy.get('.style--code_17eot')
+        return cy.get('[data-cypress-element="limits-modal-client-code"]')
     }
 
     getLimitSumLabel(){
-        return cy.get('.create-base--limit_3KSE_ > div')
+        return cy.get('[data-cypress-element="limits-modal-requestDateGE"] > :nth-child(1) > :nth-child(1) > div')
     }
 
     getLimitSum(){
@@ -37,7 +37,7 @@ class сhangeLimitModal {
     }
 
     getReasonLabel(){
-        return cy.get('.style--textarea-block_1nLpx > div')
+        return cy.get('[data-cypress-element="limits-modal-requestDateGE"]').parent().children().last()
     }
 
     getReason(){
@@ -45,7 +45,7 @@ class сhangeLimitModal {
     }
 
     getBtnSubmit(){
-        return cy.get('.style--btn-block_2Xs-t > :nth-child(1) > .button-module_primary__2Uu-9')
+        return cy.get('button[data-cypress-element="limits-modal-button-submit"]')
     }
 
     getBtnCancelReset(){

@@ -9,7 +9,7 @@ class listOfGrLimits {
     }
 
     getButtonCreateGrLimit(){
-        return cy.get('button[type="button"]').last()
+        return cy.get('[class^=button-module_secondary_] > div')
     }
 
     getGroupOfCompaniesFilter(){
@@ -42,11 +42,11 @@ class listOfGrLimits {
     }
 
     getGrLimitDetailPage(){
-        return cy.get('.item--company-name_7t9X_')
+        return cy.get('[class^=item--company-name_]')
     }
 
     getNoSearchResults(){
-        return cy.get('.list--no-search-results_14hNu')
+        return cy.get('[class^=list--no-search-results_]')
         
     }
 

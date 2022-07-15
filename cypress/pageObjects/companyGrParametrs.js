@@ -1,7 +1,7 @@
 class companyGrParametrs{
 
     getHead(){
-        return cy.get('.groupCompaniesDetail--title_5o1gI')
+        return cy.get('[class^=groupCompaniesDetail--title_]')
     }
 
     getGrName(){
@@ -13,15 +13,15 @@ class companyGrParametrs{
     }
     
     getBtnEditGroup(){
-        return cy.get('.groupComponents--button_3Jlqa').children()
+        return cy.get('[class^=groupComponents--button_]').children()
     }
 
     getAlert(){
-        return cy.get('.styles--alert-text_3DzaA')
+        return cy.get('[class^=styles--alert-text_]')
     }
 
     getLabelGrName(){
-        return cy.get('.groupComponents--input-container_vq9E1 > :nth-child(1) > .labelText--label-text_1fHCM > :nth-child(1)')
+        return cy.get('[class^=groupComponents--input-container_] > :nth-child(1) > [class^=labelText--label-text_] > :nth-child(1)')
     }
 
     getHintGrName(){
@@ -37,7 +37,7 @@ class companyGrParametrs{
     }
 
     getLabelReason(){
-        return cy.get('.groupComponents--textarea-block_3UncF > div > .labelText--label-text_1fHCM > :nth-child(1)')
+        return cy.get('[class^=groupComponents--textarea-block_] > div > [class^=labelText--label-text_] > :nth-child(1)')
     }
 
     getReason(){
@@ -45,11 +45,11 @@ class companyGrParametrs{
     }
 
     getCompanyName(){
-        return cy.get('.groupComponents--link_1BHwh')
+        return cy.get('[class^=groupComponents--link_]')
     }
 
     getCompanyInn(){
-        return cy.get('.styles--table-body_3f45- > .styles--table-row_1Om7f > :nth-child(2)')
+        return cy.get('[class^=styles--table-body_] > [class^=styles--table-row_] > :nth-child(2)')
     }
 
     getBtnDeleteGroup(){
@@ -65,7 +65,7 @@ class companyGrParametrs{
     }
     
     getBtnDeleteCompany(){
-        return cy.get('.styles--table-button_15Ijm')
+        return cy.get('.styles--table-button_3UXU7')
     }
 
     getBtnTableDeleteClick(Name){
@@ -75,7 +75,7 @@ class companyGrParametrs{
             const StoreText = $e1.text();
             if (StoreText.includes(Name)){
                 isName = true
-                return cy.get(`:nth-child(${index++}) > .styles--table-col-buttons_3sSOO > .styles--svg-wrapper_22V0N > .styles--table-button_15Ijm`).click()
+                return cy.get(`:nth-child(${index++}) > [class^=styles--table-col_] > [class^=styles--svg-wrapper_] > [class^=styles--table-button_]`).click()
             }
         })
         if(!isName){

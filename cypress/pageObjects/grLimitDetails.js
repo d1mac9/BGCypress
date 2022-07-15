@@ -1,19 +1,19 @@
 class grLimitDetails {
     
     getHead(){
-        return cy.get('.detail--title_r-VBm > span')
+        return cy.get('[data-cypress-element="groupLimitDetail-title"]')
     }
 
     getGroupName(){
-        return cy.get('.card--name_ogzIM > span')
+        return cy.get('[data-cypress-element="card-group-name"]')
     }
 
     getGrCode(){
-        return cy.get(':nth-child(1) > .card--group-info-body_1Uw88 > span')
+        return cy.get('[data-cypress-element="card-group-code-value"]')
     }
 
     getCountOfCompanies(){
-        return cy.get(':nth-child(2) > .card--group-info-body_1Uw88 > span')
+        return cy.get('[data-cypress-element="card-group-company-count-value"]')
     }
 
     getAccordeonTab(){
@@ -21,11 +21,11 @@ class grLimitDetails {
     }
 
     getСomposition(){
-        return cy.get('.card--companies-group-item_CQSmM > span')
+        return cy.get('[data-cypress-element="card-group-company-title-сompanies-list"]')
     }
 
     getBtnCreateGrLimit(){
-        return cy.get('button[type="button"]').last()
+        return cy.get('[data-cypress-element="groupLimitDetail-create-button"]')
     }
 
 }

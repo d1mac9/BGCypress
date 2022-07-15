@@ -1,7 +1,7 @@
 class createCompanyGr{
 
     getHead(){
-        return cy.get('.groupCreate--title_FStYD')
+        return cy.get('[class^=groupCreate--title_]')
     }
 
     getAlertText(){
@@ -17,16 +17,16 @@ class createCompanyGr{
     }
 
     getCompaniesSearch(){
-        return cy.get('.companiesSearch--ids-input_2ofOS > div > .input-module_input__3SpIc')
+        return cy.get('.companiesSearch--ids-input_3zTZl > :nth-child(1) > .formInputWrap--input-wrap_3WO-4 > .input-module_input__3SpIc')
 
     }
 
     getListOfCompany(){
-        return cy.get('.list--list-item_5a8jG')
+        return cy.get('[class^=list--list-item_]')
     }
 
     getBtnChoose(){
-        return cy.get('.companiesSearch--add-button_2ttDT')
+        return cy.get('[class^=companiesSearch--add-button_]')
     }
 
     getBtnCreateGroup(){

@@ -65,7 +65,7 @@ CreateGrLimit.getListOfCompany().click()
 CreateGrLimit.getButtonCreateGrLimit().click()
 
 //Открылась страница групповых лимитов
-cy.url().should('eq', Cypress.env('urlTestStg') + '/limits/group-limits')
+cy.url().should('contains', Cypress.env('urlTestStg') + '/limits/group-limits').and('not.contain','/create')
 
 })
 

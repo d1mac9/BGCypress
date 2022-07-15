@@ -1,11 +1,11 @@
 class contextMenu{
 
     getBtnEdit(){
-        return cy.get('.styles--table-button_15Ijm')
+        return cy.get('.styles--table-button_3UXU7')
     }
 
     getBtnMenu(){
-        return cy.get('.TableMenu--menu-button_1BbaF')
+        return cy.get('[data-cypress-element="tableMenu-button-contextMenu"]')
     }
 
     getBtnHistoryOfChanges(){

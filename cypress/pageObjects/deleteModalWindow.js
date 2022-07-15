@@ -1,7 +1,7 @@
 class deleteModalWindow {
 
     getHeadModalDelete(){
-        return cy.get('.modal--header_2KfOM')
+        return cy.get('[class^=modal--header_]')
     }
 
     getAlertModalDelete(){
@@ -13,7 +13,7 @@ class deleteModalWindow {
     }
 
     getTextReasonLabel(){
-        return cy.get('.groupCompaniesModal--textarea-block_26uiu > div > .labelText--label-text_1fHCM > :nth-child(1)')
+        return cy.get('[class^=groupCompaniesModal--textarea-block_] > div > [class^=labelText--label-text_] > :nth-child(1)')
     }
 
     getTextReason(){

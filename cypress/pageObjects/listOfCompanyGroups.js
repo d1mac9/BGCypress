@@ -5,7 +5,7 @@ class listOfCompanyGroups {
     }
 
     getTabGroupLimits() {
-        return cy.get('.styles--padding_3OWWl').last()
+        return cy.get('.styles--padding_1xsk2').last()
     }
 
     getGroupNameFilter(){
@@ -21,12 +21,12 @@ class listOfCompanyGroups {
     }
 
     getNoSearchResults(){
-        return cy.get('.groupsCompaniesList--no-search-results_1wVm9')
+        return cy.get('[class^=groupsCompaniesList--no-search-results_]')
         
     }
 
     getGrLimitDetailPage(){
-        return cy.get('.listItem--company-name_uac6n')
+        return cy.get('[class^=listItem--company-name_]')
     }
 
     getButtonCreateCompanyGr(){
