@@ -33,39 +33,39 @@ it ('CreateIndLimit', function (){
   cy.visit( Cypress.env('urlTestStg'))
 
 
-//Авторизоваться по админом, нажать войти
+cy.log('Авторизоваться по админом, нажать войти')
 AuthPage.getLogin().type(data.fullAdmin)
 AuthPage.getSubmitButton().click()
 
-//Выбрать "Лимиты гарантий"
+cy.log('Выбрать "Лимиты гарантий"')
 Sidebar.getMenuItem().contains('Лимиты гарантий').click()
 
-//Нажать на кнопку "Создание индивидуального лимита"
+cy.log('Нажать на кнопку "Создание индивидуального лимита"')
 cy.wait(2000)
 ListOfIndLimits.getButtonCreateIndLimit().click()
 
-// проверка заголовков полей
+cy.log('проверка заголовков полей')
 CreateIndLimit.getHead().should('contain.text', 'Создание индивидуального лимита')
 cy.wait(1000)
 
-//Заполнить поле "Сумма лимита"
+cy.log('Заполнить поле "Сумма лимита"')
 CreateIndLimit.getAmount().type(data.SumLimit)
 
-//Заполнить поля "Период действия"
+cy.log('Заполнить поля "Период действия"')
 CreateIndLimit.getStartDate().type(data.dateStart)
 CreateIndLimit.getEndDate().type(data.dateEnd)
 
-//Заполнить поле "Клиент"
+cy.log('Заполнить поле "Клиент"')
 CreateIndLimit.getClient().type(data.NameLiptSoft)
 cy.wait(2000)
 
-//Выбрать компанию
+cy.log('Выбрать компанию')
 CreateIndLimit.getListOfCompany().click()
 
-//Нажать на кнопку "Создать лимит"
+cy.log('Нажать на кнопку "Создать лимит"')
 CreateIndLimit.getButtonCreateIndLimit().click()
 
-//Открылась страница индивидуальных лимитов
+cy.log('Открылась страница индивидуальных лимитов')
 cy.url().should('contains', Cypress.env('urlTestStg') + '/limits/principal-limits').and('not.contain','/create')
 
 })

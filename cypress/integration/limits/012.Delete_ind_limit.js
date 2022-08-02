@@ -35,49 +35,49 @@ it ('DeleteIndLimit', function (){
   cy.visit( Cypress.env('urlTestStg'))
 
 
-//Авторизоваться по админом, нажать войти
+cy.log('Авторизоваться по админом, нажать войти')
 AuthPage.getLogin().type(data.fullAdmin)
 AuthPage.getSubmitButton().click()
 
-//Выбрать "Лимиты гарантий"
+cy.log('Выбрать "Лимиты гарантий"')
 Sidebar.getMenuItem().contains('Лимиты гарантий').click()
 
 
-// Заполнение поля "Компания"
+cy.log('Заполнение поля "Компания"')
 ListOfIndLimits.getCompanyFilter().type(data.NameLiptSoft)
 
-// Заполнение поля "Мин. сумма лимита"
+cy.log('Заполнение поля "Мин. сумма лимита"')
 ListOfIndLimits.getMinAmountFilter().type(data.SumLimitChanged)
 
-// Заполнение поля "Макс. сумма лимита"
+cy.log('Заполнение поля "Макс. сумма лимита"')
 ListOfIndLimits.getMaxAmountFilter().type(data.SumLimitChanged)
 
-// Заполнение поля "Период действия с"
+cy.log('Заполнение поля "Период действия с"')
 ListOfIndLimits.getStartDateFilter().type(data.dateStartChanged)
 
-// Заполнение поля "Период действия по"
+cy.log('Заполнение поля "Период действия по"')
 ListOfIndLimits.getEndDateFilter().type(data.dateEndChanged)
 
 cy.wait(2000)
 
-//Нажать на вызов контекстного меню
+cy.log('Нажать на вызов контекстного меню')
 ContextMenu.getBtnMenu().click({force: true})
 
-//Нажать на удаление контекстного меню
+cy.log('Нажать на удаление контекстного меню')
 ContextMenu.getBtnDelete().click()
 
-//Проверка заголовка в модальном окне удаления
+cy.log('Проверка заголовка в модальном окне удаления')
 DeleteModalWindow.getHeadModalDelete().should('contain.text', 'Удалить индивидуальный лимит?')
 
-//Проверка текста алерта в модальном окне удаления
+cy.log('Проверка текста алерта в модальном окне удаления')
 DeleteModalWindow.getAlertModalDelete().should('contain.text', 'После удаления восстановить лимит будет невозможно. Лимит перестанет действовать, и все данные о нём будут удалены из системы.')
 
-//Нажать на удаление контекстного меню
-DeleteModalWindow.getSubmitModalDelete().click()
+cy.log('Нажать на кнопку "Да, удалить"')
+DeleteModalWindow.getSubmitLimitModalDelete().click()
 
 cy.wait(500)
 
-//Проверка, что лимит удален
+cy.log('Проверка, что лимит удален')
 ListOfIndLimits.getNoSearchResults().should('contain.text', 'По этому запросу ничего не найдено.')
 })
 

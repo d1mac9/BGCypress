@@ -36,32 +36,32 @@ it ('DeleteGrLimit', function (){
   cy.visit( Cypress.env('urlTestStg'))
 
 
-//Авторизоваться по админом, нажать войти
+cy.log('Авторизоваться по админом, нажать войти')
 AuthPage.getLogin().type(data.fullAdmin)
 AuthPage.getSubmitButton().click()
 
-//Выбрать "Лимиты гарантий"
+cy.log('Выбрать "Лимиты гарантий"')
 Sidebar.getMenuItem().contains('Лимиты гарантий').click()
 
-//Нажать на кнопку "Создание группового лимита"
+cy.log('Перейти на вкладку "Групповые лимиты"')
 ListOfGrLimits.getTabGroupLimits().should('contain.text', 'Групповые лимиты').click()
 
-// Заполнение поля "Компания"
+cy.log('Заполнение поля "Компания"')
 ListOfGrLimits.getCompanyFilter().type(data.NameLiptSoft)
 
-// Заполнение поля "Группа компаний"
+cy.log('Заполнение поля "Группа компаний"')
 ListOfGrLimits.getGroupOfCompaniesFilter().type(data.GroupOfCompaniesName)
 
-// Заполнение поля "Мин. сумма лимита"
+cy.log('Заполнение поля "Мин. сумма лимита"')
 ListOfGrLimits.getMinAmountFilter().type(data.SumLimit)
 
-// Заполнение поля "Макс. сумма лимита"
+cy.log('Заполнение поля "Макс. сумма лимита"')
 ListOfGrLimits.getMaxAmountFilter().type(data.SumLimit)
 
-// Заполнение поля "Период действия с"
+cy.log('Заполнение поля "Период действия с"')
 ListOfGrLimits.getStartDateFilter().type(data.dateStart)
 
-// Заполнение поля "Период действия по"
+cy.log('Заполнение поля "Период действия по"')
 ListOfGrLimits.getEndDateFilter().type(data.dateEnd)
 
 
@@ -82,8 +82,8 @@ DeleteModalWindow.getHeadModalDelete().should('contain.text', 'Удалить г
 //Проверка текста алерта в модальном окне удаления
 DeleteModalWindow.getAlertModalDelete().should('contain.text', 'После удаления восстановить лимит будет невозможно. Лимит перестанет действовать, и все данные о нём будут удалены из системы.')
 
-//Нажать на удаление контекстного меню
-DeleteModalWindow.getSubmitModalDelete().click()
+//Нажать на кнопку "Да, удалить"
+DeleteModalWindow.getSubmitLimitModalDelete().click()
 
 cy.wait(500)
 

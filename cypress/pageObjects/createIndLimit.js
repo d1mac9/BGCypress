@@ -1,7 +1,7 @@
 class createIndLimit
 {
     getHead(){
-        return cy.get('.create--title_2tAXS')
+        return cy.get('[class^=create--title_]')
     }
     
     getAmount(){
@@ -25,7 +25,7 @@ class createIndLimit
     }
 
     getListOfCompany(){
-        return cy.get('.list--list-item_2sx-a')
+        return cy.get('[class^=list--list-item_]')
     }
 
 }

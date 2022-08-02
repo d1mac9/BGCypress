@@ -5,7 +5,7 @@ class addCompanyInGr{
     }
 
     getCompanyChoose(){
-        return cy.get('.formInputWrap--input-wrap_3WO-4 > .input-module_input__3SpIc')
+        return cy.get('[class^=formInputWrap--input-wrap_] > [class^=input-module_input_]')
     }
 
     getListOfCompany(){
@@ -33,11 +33,11 @@ class addCompanyInGr{
     }
 
     getBtnDeleteCompany(){
-        return cy.get('.styles--table-button_3UXU7')
+        return cy.get('[data-cypress-element="table-body-button-delete"]')
     }
 
     getCommentLabel(){
-        return cy.get('.labelText--label-text_1fHCM')
+        return cy.get('[class^=labelText--label-text_]')
     }
     
     getCommentReason(){

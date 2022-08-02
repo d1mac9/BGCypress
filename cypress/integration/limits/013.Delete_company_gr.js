@@ -36,47 +36,47 @@ it ('DeleteCompanyGr', function (){
   cy.visit( Cypress.env('urlTestStg'))
 
 
-//Авторизоваться по админом, нажать войти
+cy.log('Авторизоваться по админом, нажать войти')
 AuthPage.getLogin().type(data.fullAdmin)
 AuthPage.getSubmitButton().click()
 
-//Выбрать "Лимиты гарантий"
+cy.log('Выбрать "Лимиты гарантий"')
 Sidebar.getMenuItem().contains('Лимиты гарантий').click()
 
-//Нажать на кнопку "Создание группового лимита"
+cy.log('Перейти на вкладку "Группы компаний"')
 ListOfCompanyGroups.getTabGroupLimits().should('contain.text', 'Группы компаний').click()
 
-// Заполнение поля "Компания"
+cy.log('Заполнение поля "Компания"')
 ListOfCompanyGroups.getCompanyFilter().type(data.NameLiptSoft)
 
-// Заполнение поля "Название"
+cy.log('Заполнение поля "Название"')
 ListOfCompanyGroups.getGroupNameFilter().type(data.GroupOfCompaniesNameChanged)
 
-// Заполнение поля "Код"
+cy.log('Заполнение поля "Код"')
 ListOfCompanyGroups.getCodeFilter().type(data.CompanyGroupCodeChanged)
 
-//Ожидание загрузки результатов
+cy.log('Ожидание загрузки результатов')
 cy.wait(2000)
 
-//Нажать на вызов контекстного меню
+cy.log('Нажать на вызов контекстного меню')
 ContextMenu.getBtnMenu().click({force: true})
 
-//Нажать на удаление контекстного меню
+cy.log('Нажать на удаление контекстного меню')
 ContextMenu.getBtnDelete().click()
 
-//Проверка заголовка в модальном окне удаления
+cy.log('Проверка заголовка в модальном окне удаления')
 DeleteModalWindow.getHeadModalDelete().should('contain.text', 'Удалить группу компаний?')
 
-//Проверка текста алерта в модальном окне удаления
-//\u00A0 - это не разрывной пробел, в DOM страницы = &nbsp;
+cy.log('Проверка текста алерта в модальном окне удаления')
+//\u00A0 - это неразрывной пробел, в DOM страницы = &nbsp;
 DeleteModalWindow.getAlertModalDelete().should('contain.text', `Вы собираетесь удалить группу\u00A0[${data.CompanyGroupCodeChanged}] ${data.GroupOfCompaniesNameChanged}.Групповые лимиты перестанут действовать\u00A0для компаний из состава. После удаления восстановить группу невозможно.`)
 
-//Нажать на удаление контекстного меню
-DeleteModalWindow.getSubmitModalDelete().click()
+cy.log('Нажать на кнопку "Да, удалить"')
+DeleteModalWindow.getSubmitGroupModalDelete().click()
 
 cy.wait(500)
 
-//Проверка, что лимит удален
+cy.log('Проверка, что лимит удален')
 ListOfCompanyGroups.getNoSearchResults().should('contain.text', 'По этому запросу ничего не найдено.')
 
 })

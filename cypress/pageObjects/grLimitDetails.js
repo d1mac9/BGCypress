@@ -17,7 +17,7 @@ class grLimitDetails {
     }
 
     getAccordeonTab(){
-        return cy.get('.accordion-tab-module_main__2iWuD')
+        return cy.get('[class^=accordion-tab-module_main_]')
     }
 
     getСomposition(){

@@ -33,53 +33,53 @@ it ('FindIndLimit', function (){
   cy.visit( Cypress.env('urlTestStg'))
 
 
-//Авторизоваться по админом, нажать войти
+cy.log('Авторизоваться по админом, нажать войти')
 AuthPage.getLogin().type(data.fullAdmin)
 AuthPage.getSubmitButton().click()
 
-//Выбрать "Лимиты гарантий"
+cy.log('Выбрать "Лимиты гарантий"')
 Sidebar.getMenuItem().contains('Лимиты гарантий').click()
 cy.wait(1000)
 
-//Проверка кнопки фильтра, что она заблокирована
+cy.log('Проверка кнопки фильтра, что она заблокирована')
 ListOfIndLimits.getResetFilter().should('be.disabled')
 
-// Заполнение поля "Компания"
+cy.log('Заполнение поля "Компания"')
 ListOfIndLimits.getCompanyFilter().type(data.NameLiptSoft)
 
-// Заполнение поля "Мин. сумма лимита"
+cy.log('Заполнение поля "Мин. сумма лимита"')
 ListOfIndLimits.getMinAmountFilter().type(data.SumLimit)
 
-// Заполнение поля "Макс. сумма лимита"
+cy.log('Заполнение поля "Макс. сумма лимита"')
 ListOfIndLimits.getMaxAmountFilter().type(data.SumLimit)
 
-// Заполнение поля "Период действия с"
+cy.log('Заполнение поля "Период действия с"')
 ListOfIndLimits.getStartDateFilter().type(data.dateStart)
 
-// Заполнение поля "Период действия по"
+cy.log('Заполнение поля "Период действия по"')
 ListOfIndLimits.getEndDateFilter().type('12112022')
 cy.wait(1000)
 
-// Проверка кнопки фильтра что она разблокирована
+cy.log('Проверка кнопки фильтра что она разблокирована')
 ListOfIndLimits.getResetFilter().should('be.enabled')
 
-//Проверка текста при отсутствии результатов
+cy.log('Проверка текста при отсутствии результатов')
 ListOfIndLimits.getNoSearchResults().should('contain.text', 'По этому запросу ничего не найдено.')
 
-// Заполнение поля "Период действия по"
+cy.log('Заполнение поля "Период действия по"')
 ListOfIndLimits.getEndDateFilter().clear().type(data.dateEnd)
 cy.wait(1000)
 
-// Переход в детальную страницу индивидуального лимита
+cy.log('Переход в детальную страницу индивидуального лимита')
 ListOfIndLimits.getIndLimitDetailPage().children().first().click()
 
-//Проверка заголовка формы
+cy.log('Проверка заголовка формы')
 IndLimitDetails.getHead().should('contain.text', 'Лимиты компании')
 
-//Проверка названия компании
+cy.log('Проверка названия компании')
 IndLimitDetails.getCompanyName().should('contain.text', data.NameLiptSoft)
 
-//Проверка ИНН компании
+cy.log('Проверка ИНН компании')
 IndLimitDetails.getCompanyInn().should('contain.text', data.INNLiptSoft)
 
 })

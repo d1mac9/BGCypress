@@ -36,55 +36,55 @@ it ('DeleteCompanyInGroup', function (){
   cy.visit( Cypress.env('urlTestStg'))
 
 
-//Авторизоваться по админом, нажать войти
+cy.log('Авторизоваться по админом, нажать войти')
 AuthPage.getLogin().type(data.fullAdmin)
 AuthPage.getSubmitButton().click()
 
-//Выбрать "Лимиты гарантий"
+cy.log('Выбрать "Лимиты гарантий"')
 Sidebar.getMenuItem().contains('Лимиты гарантий').click()
 
-//Нажать на кнопку "Создание группового лимита"
+cy.log('Перейти на вкладку "Группы компаний"')
 ListOfCompanyGroups.getTabGroupLimits().should('contain.text', 'Группы компаний').click()
 cy.wait(2000)
 
-// Заполнение поля "Компания"
+cy.log('Заполнение поля "Компания"')
 ListOfCompanyGroups.getCompanyFilter().type(data.NameLiptSoft)
 
-// Заполнение поля "Название"
+cy.log('Заполнение поля "Название"')
 ListOfCompanyGroups.getGroupNameFilter().type(data.GroupOfCompaniesNameChanged)
 
-// Заполнение поля "Код"
+cy.log('Заполнение поля "Код"')
 ListOfCompanyGroups.getCodeFilter().type(data.CompanyGroupCodeChanged)
 cy.wait(3000)
 
-// Переход в детальную страницу группы компаний
+cy.log('Переход в детальную страницу группы компаний')
 ListOfCompanyGroups.getGrLimitDetailPage().children().first().click()
 
-// Нажать иконку удалить
+cy.log('Нажать иконку удалить')
 CompanyGrParametrs.getBtnTableDeleteClick(data.NameZenit)
 cy.wait(1000)
 
-//Проверка заголовка в модальном окне удаления
+cy.log('Проверка заголовка в модальном окне удаления')
 DeleteModalWindow.getHeadModalDelete().click().should('contain.text', 'Удалить компанию из состава группы?')
 
-//Проверка текста алерта в модальном окне удаления
-//\u00A0 - это не разрывной пробел, в DOM страницы = &nbsp;
+cy.log('Проверка текста алерта в модальном окне удаления')
+//\u00A0 - это неразрывной пробел, в DOM страницы = &nbsp;
 DeleteModalWindow.getAlertModalDelete().click().should('contain.text', `Компания [ИНН: ${data.INNZenit}]\u00A0${data.NameZenit}\u00A0больше не будет входить в группу\u00A0${data.GroupOfCompaniesNameChanged}.`)
 
-//Проверка заголовка текстового поля
+cy.log('Проверка заголовка текстового поля')
 DeleteModalWindow.getTextReasonLabel().should('contain.text', 'Причина удаления')
 
-//Заполнение комментария
+cy.log('Заполнение комментария')
 DeleteModalWindow.getTextReason().type('Автотест')
 
-//Нажать на удаление контекстного меню
-DeleteModalWindow.getSubmitModalDelete().click()
+cy.log('Нажать на удаление контекстного меню')
+DeleteModalWindow.getSubmitCompanyModalDelete().click()
 cy.wait(1000)
 
-//Проверить переход на детальную страницу группы компаний
+cy.log('Проверить переход на детальную страницу группы компаний')
 cy.url().should('contains', Cypress.env('urlTestStg') + '/limits/group-companies/')
 
-//Проверка отсутствия компании в группе
+cy.log('Проверка отсутствия компании в группе')
 CompanyGrParametrs.getCompanyName().should('not.contain.text', data.NameZenit)
 
 })

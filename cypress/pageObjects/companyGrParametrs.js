@@ -25,15 +25,15 @@ class companyGrParametrs{
     }
 
     getHintGrName(){
-        return cy.get(':nth-child(1) > .formInputWrap--helper-text_3r4eP')
+        return cy.get(':nth-child(1) > [class^=formInputWrap--helper-text_]')
     }
 
     getLabelGrCode(){
-        return cy.get(':nth-child(2) > .labelText--label-text_1fHCM > :nth-child(1)')
+        return cy.get(':nth-child(2) > [class^=labelText--label-text_]> :nth-child(1)')
     }
 
     getHintGrCode(){
-        return cy.get(':nth-child(2) > .formInputWrap--helper-text_3r4eP')
+        return cy.get(':nth-child(2) > [class^=formInputWrap--helper-text_]')
     }
 
     getLabelReason(){
@@ -53,11 +53,11 @@ class companyGrParametrs{
     }
 
     getBtnDeleteGroup(){
-        return cy.get('')
+        return cy.get('[data-cypress-element="limits-button-deleteButton"]')
     }
 
     getBtnAddCompany(){
-        return cy.get('.button-module_secondary__Sx2AO').last()
+        return cy.get('[data-cypress-element="detail-button-addGroupButton"] > button[type="button"]')
     }
 
     getHistory(){
@@ -65,7 +65,7 @@ class companyGrParametrs{
     }
     
     getBtnDeleteCompany(){
-        return cy.get('.styles--table-button_3UXU7')
+        return cy.get('[data-cypress-element="detail-button-changeHistory"]')
     }
 
     getBtnTableDeleteClick(Name){

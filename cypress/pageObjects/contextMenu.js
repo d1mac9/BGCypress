@@ -1,7 +1,8 @@
 class contextMenu{
 
     getBtnEdit(){
-        return cy.get('.styles--table-button_3UXU7')
+        // return cy.get('[data-cypress-element="table-body-row-button-change"]')
+        return cy.get('[class^=styles--table-button_]')
     }
 
     getBtnMenu(){
@@ -9,11 +10,11 @@ class contextMenu{
     }
 
     getBtnHistoryOfChanges(){
-        return cy.get('.menu-module_wrapper__1PPh7').children().first()
+        return cy.get('[data-cypress-element="tableMenu-contextMenu-button-changeHistory"]')
     }
 
     getBtnDelete(){
-        return cy.get('.menu-module_wrapper__1PPh7').children().last()
+        return cy.get('[data-cypress-element="tableMenu-contextMenu-button-delete"]')
     }
 
 }

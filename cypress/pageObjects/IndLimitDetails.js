@@ -1,16 +1,16 @@
 class indLimitDetails {
 
     getButtonCreateIndLimit(){
-        return cy.get('a > .button-module_primary__2Uu-9 > div')
+        return cy.get('a > [class^=button-module_primary_] > div')
     }
     getHead(){
-        return cy.get('.detail--title_1D1N2')
+        return cy.get('[class^=detail--title_]')
     }
     getCompanyName(){
-        return cy.get('.detail--company-info-title-link_29--A')
+        return cy.get('[class^=detail--company-info-title-link_]')
     }
     getCompanyInn(){
-        return cy.get(':nth-child(1) > .detail--value__3BAh')
+        return cy.get(':nth-child(1) > [class^=detail--value_]')
     }
 
     

@@ -5,7 +5,7 @@ class historyOfChanges {
     }
 
     getDate(){
-        return cy.get('.style--item-date_1KcM_')
+        return cy.get('[data-cypress-element="history-modal-date"]')
     }
 
     getText(){

@@ -5,11 +5,18 @@ class deleteModalWindow {
     }
 
     getAlertModalDelete(){
-        return cy.get('.alert-module_body__10GK6')
+        return cy.get('[class^=alert-module_body_]')
     }
 
-    getSubmitModalDelete(){
-        return cy.get('.button-module_danger-filled__3MMgl > div')
+    getSubmitLimitModalDelete(){
+        return cy.get('[data-cypress-element="limits-modal-button-submit"]')
+    }
+
+    getSubmitGroupModalDelete(){
+        return cy.get('[data-cypress-element="deleteGroup-modal-button-submit"]')
+    }
+    getSubmitCompanyModalDelete(){
+        return cy.get('[data-cypress-element="deleteCompany-modal-button-submit"]')
     }
 
     getTextReasonLabel(){

@@ -25,7 +25,7 @@ class сhangeLimitModal {
     }
 
     getPeriodLabel(){
-        return cy.get('.formDate--wrapper_2Cenf').children()
+        return cy.get('[class^=formDate--wrapper_]').children()
     }
 
     getStartDate(){

@@ -18,11 +18,8 @@
  "experimentalSessionAndOrigin": true,
  
   "env": {
-    "url": "https://rahulshettyacademy.com/angularpractice/",
     "urlTest": "http://test.liptsoft.ru/auth",
-    "urlTestStg": "http://localhost:4242",
-    "urli2bTest": "https://client.test.liptsoft.ru/",
-    "urli2BStg": "https://uzedo.bspb.ru"
+    "urlTestStg": "http://anyflow-tst.bankspb.ru"
   },
   "testFiles": "**/*.js",
   "retries": {

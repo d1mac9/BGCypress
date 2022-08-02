@@ -36,61 +36,63 @@ it ('CreateCompanyGr', function (){
   cy.visit( Cypress.env('urlTestStg'))
 
 
-//Авторизоваться по админом, нажать войти
+cy.log('Авторизоваться по админом, нажать войти')
 AuthPage.getLogin().type(data.fullAdmin)
 AuthPage.getSubmitButton().click()
 
-//Выбрать "Лимиты гарантий"
+cy.log('Выбрать "Лимиты гарантий"')
 Sidebar.getMenuItem().contains('Лимиты гарантий').click()
 
-//Нажать на кнопку "Создание группового лимита"
+cy.log('Перейти на вкладку "Группы компаний"')
 ListOfCompanyGroups.getTabGroupLimits().should('contain.text', 'Группы компаний').click()
 cy.wait(2000)
+
+cy.log('Нажать на кнопку "Создание группы компаний"')
 ListOfCompanyGroups.getButtonCreateCompanyGr().click()
 
-// проверка заголовков полей
+cy.log('проверка заголовков полей')
 CreateCompanyGr.getHead().should('contain.text', 'Создание группы компаний')
 
-// проверка текста алерта
+cy.log('проверка текста алерта')
 CreateCompanyGr.getAlertText().should('contain.text', 'Введите название и код группы из решения об установлении лимита.')
 
-//Заполнить поле "Название"
+cy.log('Заполнить поле "Название"')
 CreateCompanyGr.getGrName().type(data.GroupOfCompaniesName)
 
-//Заполнить поле "Код"
+cy.log('Заполнить поле "Код"')
 CreateCompanyGr.getGrCode().type(data.CompanyGroupCode)
 
-//Заполнить поле "Выбор компаний"
+cy.log('Заполнить поле "Выбор компаний"')
 CreateCompanyGr.getCompaniesSearch().type(data.NameLiptSoft)
 cy.wait(2000)
 
-//Выбрать компанию
+cy.log('Выбрать компанию')
 CreateCompanyGr.getListOfCompany().click()
 
-//Нажать "Выбрать"
+cy.log('Нажать "Выбрать"')
 CreateCompanyGr.getBtnChoose().click()
 cy.wait(2000)
 
-//Нажать на кнопку "Создать группу"
+cy.log('Нажать на кнопку "Создать группу"')
 CreateCompanyGr.getBtnCreateGroup().click()
 cy.wait(1000)
 
-//Проверка заголовка страницы
+cy.log('Проверка заголовка страницы')
 GrLimitDetails.getHead().should('contain.text', 'Лимиты группы компаний')
 
-//Проверка названия группы
+cy.log('Проверка названия группы')
 GrLimitDetails.getGroupName().should('contain.text', data.GroupOfCompaniesName)
 
-//Проверка кода группы
+cy.log('Проверка кода группы')
 GrLimitDetails.getGrCode().should('contain.text', data.CompanyGroupCode)
 
-//Проверка кол-ва компаний
+cy.log('Проверка кол-ва компаний')
 GrLimitDetails.getCountOfCompanies().should('contain.text', '1')
 
-//Раскрыть аккордеон
+cy.log('Раскрыть аккордеон')
 GrLimitDetails.getAccordeonTab().click()
 
-//Проверить название компании
+cy.log('Проверить название компании')
 GrLimitDetails.getСomposition().should('contain.text', `[ИНН: ${data.INNLiptSoft}] ${data.NameLiptSoft}`)
 })
 

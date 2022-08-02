@@ -34,54 +34,54 @@ it ('FindCompanyGr', function (){
   cy.visit( Cypress.env('urlTestStg'))
 
 
-//Авторизоваться по админом, нажать войти
+cy.log('Авторизоваться по админом, нажать войти')
 AuthPage.getLogin().type(data.fullAdmin)
 AuthPage.getSubmitButton().click()
 
-//Выбрать "Лимиты гарантий"
+cy.log('Выбрать "Лимиты гарантий"')
 Sidebar.getMenuItem().contains('Лимиты гарантий').click()
 
-//Перейти во вкладку "Группы компаний"
+cy.log('Перейти во вкладку "Группы компаний"')
 ListOfCompanyGroups.getTabGroupLimits().should('contain.text', 'Группы компаний').click()
 
-//Проверка кнопки фильтра, что она заблокирована
+cy.log('Проверка кнопки фильтра, что она заблокирована')
 ListOfCompanyGroups.getResetFilter().should('be.disabled')
 
-// Заполнение поля "Компания"
+cy.log('Заполнение поля "Компания"')
 ListOfCompanyGroups.getCompanyFilter().type(data.NameLiptSoft)
 
-// Заполнение поля "Название"
+cy.log('Заполнение поля "Название"')
 ListOfCompanyGroups.getGroupNameFilter().type(data.GroupOfCompaniesName)
 
-// Заполнение поля "Код"
+cy.log('Заполнение поля "Код"')
 ListOfCompanyGroups.getCodeFilter().type('999946445')
 
-// Проверка кнопки фильтра что она разблокирована
+cy.log('Проверка кнопки фильтра что она разблокирована')
 ListOfCompanyGroups.getResetFilter().should('be.enabled')
 
-// Проверка текста при отсутствии результатов
+cy.log('Проверка текста при отсутствии результатов')
 cy.wait(500)
 ListOfCompanyGroups.getNoSearchResults().should('contain.text', 'По этому запросу ничего не найдено.')
 
-// Заполнение поля "Код"
+cy.log('Заполнение поля "Код"')
 ListOfCompanyGroups.getCodeFilter().clear().type(data.CompanyGroupCode)
 
-// Переход в детальную страницу группы компаний
+cy.log('Переход в детальную страницу группы компаний')
 ListOfCompanyGroups.getGrLimitDetailPage().children().first().click()
 
-// Проверка названия заголовка
+cy.log('Проверка названия заголовка')
 CompanyGrParametrs.getHead().should('contain.text', 'Параметры группы компаний')
 
-// Проверка названия группы
+cy.log('Проверка названия группы')
 CompanyGrParametrs.getGrName().should('contain.value', data.GroupOfCompaniesName)
 
-// Проверка кода группы
+cy.log('Проверка кода группы')
 CompanyGrParametrs.getGrCode().should('contain.value', data.CompanyGroupCode)
 
-// Проверка названия компании
+cy.log('Проверка названия компании')
 CompanyGrParametrs.getCompanyName().should('contain.text', data.NameLiptSoft)
 
-// Проверка ИНН компании
+cy.log('Проверка ИНН компании')
 CompanyGrParametrs.getCompanyInn().should('contain.text', data.INNLiptSoft)
 
 })

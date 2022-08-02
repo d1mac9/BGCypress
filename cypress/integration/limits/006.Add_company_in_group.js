@@ -36,83 +36,83 @@ it ('AddCompanyInGroup', function (){
   cy.visit( Cypress.env('urlTestStg'))
 
 
-//Авторизоваться по админом, нажать войти
+cy.log('Авторизоваться по админом, нажать войти')
 AuthPage.getLogin().type(data.fullAdmin)
 AuthPage.getSubmitButton().click()
 
-//Выбрать "Лимиты гарантий"
+cy.log('Выбрать "Лимиты гарантий"')
 Sidebar.getMenuItem().contains('Лимиты гарантий').click()
 
-//Нажать на кнопку "Создание группового лимита"
+cy.log('Перейти на вкладку "Группы компаний"')
 ListOfCompanyGroups.getTabGroupLimits().should('contain.text', 'Группы компаний').click()
 cy.wait(2000)
 
-// Заполнение поля "Компания"
+cy.log('Заполнение поля "Компания"')
 ListOfCompanyGroups.getCompanyFilter().type(data.NameLiptSoft)
 
-// Заполнение поля "Название"
+cy.log('Заполнение поля "Название"')
 ListOfCompanyGroups.getGroupNameFilter().type(data.GroupOfCompaniesName)
 
-// Заполнение поля "Код"
+cy.log('Заполнение поля "Код"')
 ListOfCompanyGroups.getCodeFilter().type(data.CompanyGroupCode)
 cy.wait(2000)
 
-// Переход в детальную страницу группы компаний
+cy.log('Переход в детальную страницу группы компаний')
 ListOfCompanyGroups.getGrLimitDetailPage().children().first().click()
 
-// Нажать кнопку "Добавить компании"
+cy.log('Нажать кнопку "Добавить компании"')
 CompanyGrParametrs.getBtnAddCompany().click()
 cy.wait(1000)
 
-// Проверить название заголовка
+cy.log('Проверить название заголовка')
 AddCompanyInGr.getHead().should('contain.text', 'Добавление компаний в состав группы')
 
-//Заполнить название компании
+cy.log('Заполнить название компании')
 AddCompanyInGr.getCompanyChoose().type(data.NameZenit)
 cy.wait(2000)
 
-//Выбрать компанию
+cy.log('Выбрать компанию')
 AddCompanyInGr.getListOfCompany().click()
 
-//Нажать "Выбрать"
+cy.log('Нажать "Выбрать"')
 AddCompanyInGr.getBtnChoose().click()
 
-//Проверка названия столбца компании
+cy.log('Проверка названия столбца компании')
 AddCompanyInGr.getCompanyColumnName().should('contain.text', 'Компания')
 
-//Проверка названия столбца ИНН
+cy.log('Проверка названия столбца ИНН')
 AddCompanyInGr.getInnColumnName().should('contain.text', 'ИНН')
 
-//Проверка названия компании
+cy.log('Проверка названия компании')
 AddCompanyInGr.getCompanyName().should('contain.text', data.NameZenit)
 
-//Проверка ИНН компании
+cy.log('Проверка ИНН компании')
 AddCompanyInGr.getCompanyInn().should('contain.text', data.INNZenit)
 
-//Удаление уже добавленной компании
+cy.log('Удаление уже добавленной компании')
 AddCompanyInGr.getBtnDeleteCompany().click()
 
-//Заполнить название компании
+cy.log('Заполнить название компании')
 AddCompanyInGr.getCompanyChoose().type(data.NameZenit)
 cy.wait(2000)
 
-//Выбрать компанию
+cy.log('Выбрать компанию')
 AddCompanyInGr.getListOfCompany().click()
 
 
-//Нажать "Выбрать"
+cy.log('Нажать "Выбрать"')
 AddCompanyInGr.getBtnChoose().click()
 
-//Проверка названия заголовка комментария
+cy.log('Проверка названия заголовка комментария')
 AddCompanyInGr.getCommentLabel().should('contain.text','Причина добавления')
 
-//Заполнить поле комментарий
+cy.log('Заполнить поле комментарий')
 AddCompanyInGr.getCommentReason().type('Автотест')
 
-//Нажать кнопку "Добавить в группу"
+cy.log('Нажать кнопку "Добавить в группу"')
 AddCompanyInGr.getBtnCreateGr().click()
 
-//Проверить переход на детальную страницу группы компаний
+cy.log('Проверить переход на детальную страницу группы компаний')
 cy.wait(1000)
 cy.url().should('contains', Cypress.env('urlTestStg') + '/limits/group-companies/')
 })

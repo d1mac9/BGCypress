@@ -5,7 +5,7 @@ class listOfIndLimits
     }
 
     getButtonCreateIndLimit(){
-        return cy.get('.button-module_secondary__Sx2AO > div')
+        return cy.get('[data-cypress-element="filter-button-principalLimitsCreate"]')
     }
 
     getCompanyFilter(){
@@ -34,12 +34,12 @@ class listOfIndLimits
     }
 
     getNoSearchResults(){
-        return cy.get('.list--no-search-results_H3LkG')
+        return cy.get('[class^=list--no-search-results_]')
         
     }
     
     getIndLimitDetailPage(){
-        return cy.get('.item--table-col-company_1XUj6')
+        return cy.get('[data-cypress-element="table-body-row-companyName"]')
     }
 
 }

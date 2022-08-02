@@ -33,38 +33,42 @@ it ('CreateGrLimit', function (){
   cy.visit( Cypress.env('urlTestStg'))
 
 
-//Авторизоваться по админом, нажать войти
+cy.log('Авторизоваться по админом, нажать войти')
 AuthPage.getLogin().type(data.fullAdmin)
 AuthPage.getSubmitButton().click()
 
-//Выбрать "Лимиты гарантий"
+cy.log('Выбрать "Лимиты гарантий"')
 Sidebar.getMenuItem().contains('Лимиты гарантий').click()
 
-//Нажать на кнопку "Создание группового лимита"
 
+cy.log('Перейти на вкладку "Групповые лимиты"')
 ListOfGrLimits.getTabGroupLimits().should('contain.text', 'Групповые лимиты').click()
 cy.wait(2000)
+
+cy.log('Нажать на кнопку "Создание группового лимита"')
 ListOfGrLimits.getButtonCreateGrLimit().click()
 
-// проверка заголовков полей
+cy.log('Проверка заголовка полей')
 CreateGrLimit.getHead().should('contain.text', 'Создание группового лимита')
 
 
-//Заполнить поле "Сумма лимита"
+cy.log('Заполнить поле "Сумма лимита"')
 CreateGrLimit.getAmount().type(data.SumLimit)
 
-//Заполнить поля "Период действия"
+cy.log('Заполнить поля "Период действия"')
 CreateGrLimit.getStartDate().type(data.dateStart)
 CreateGrLimit.getEndDate().type(data.dateEnd)
-//Заполнить поле "Клиент"
+
+cy.log('Заполнить поле "Клиент"')
 CreateGrLimit.getCompany().type(data.GroupOfCompaniesName)
-//Выбрать компанию
+
+cy.log('Выбрать компанию')
 CreateGrLimit.getListOfCompany().click()
 
-//Нажать на кнопку "Создать лимит"
+cy.log('Нажать на кнопку "Создать лимит"')
 CreateGrLimit.getButtonCreateGrLimit().click()
 
-//Открылась страница групповых лимитов
+cy.log('Открылась страница групповых лимитов')
 cy.url().should('contains', Cypress.env('urlTestStg') + '/limits/group-limits').and('not.contain','/create')
 
 })

@@ -5,7 +5,7 @@ class createCompanyGr{
     }
 
     getAlertText(){
-        return cy.get('.alert-module_body__10GK6 > span')
+        return cy.get('[class^=alert-module_body_] > span')
     }
 
     getGrName(){
@@ -17,7 +17,7 @@ class createCompanyGr{
     }
 
     getCompaniesSearch(){
-        return cy.get('.companiesSearch--ids-input_3zTZl > :nth-child(1) > .formInputWrap--input-wrap_3WO-4 > .input-module_input__3SpIc')
+        return cy.get('[class^=companiesSearch--ids-input_] > :nth-child(1) > [class^=formInputWrap--input-wrap_] > [class^=input-module_input_]')
 
     }
 

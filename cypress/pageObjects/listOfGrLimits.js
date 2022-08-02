@@ -5,7 +5,7 @@ class listOfGrLimits {
     }
 
     getTabGroupLimits(){
-        return cy.get(':nth-child(2) > .tab-head-module_tab__WpYVI > div')
+        return cy.get(':nth-child(2) > [class^=tab-head-module_tab_] > div')
     }
 
     getButtonCreateGrLimit(){

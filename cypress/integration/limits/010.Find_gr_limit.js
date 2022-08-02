@@ -34,66 +34,66 @@ it ('FindGrLimit', function (){
   cy.visit( Cypress.env('urlTestStg'))
 
 
-//Авторизоваться по админом, нажать войти
+cy.log('Авторизоваться по админом, нажать войти')
 AuthPage.getLogin().type(data.fullAdmin)
 AuthPage.getSubmitButton().click()
 
-//Выбрать "Лимиты гарантий"
+cy.log('Выбрать "Лимиты гарантий"')
 Sidebar.getMenuItem().contains('Лимиты гарантий').click()
 
-//Перейти во вкладку "Групповые лимиты"
+cy.log('Перейти во вкладку "Групповые лимиты"')
 ListOfGrLimits.getTabGroupLimits().should('contain.text', 'Групповые лимиты').click()
 
-//Проверка кнопки фильтра, что она заблокирована
+cy.log('Проверка кнопки фильтра, что она заблокирована')
 ListOfGrLimits.getResetFilter().should('be.disabled')
 
-// Заполнение поля "Компания"
+cy.log('Заполнение поля "Компания"')
 ListOfGrLimits.getCompanyFilter().type(data.NameLiptSoft)
 
-// Заполнение поля "Группа компаний"
+cy.log('Заполнение поля "Группа компаний"')
 ListOfGrLimits.getGroupOfCompaniesFilter().type(data.GroupOfCompaniesName)
 
-// Заполнение поля "Мин. сумма лимита"
+cy.log('Заполнение поля "Мин. сумма лимита"')
 ListOfGrLimits.getMinAmountFilter().type(data.SumLimit)
 
-// Заполнение поля "Макс. сумма лимита"
+cy.log('Заполнение поля "Макс. сумма лимита"')
 ListOfGrLimits.getMaxAmountFilter().type(data.SumLimit)
 
-// Заполнение поля "Период действия с"
+cy.log('Заполнение поля "Период действия с"')
 ListOfGrLimits.getStartDateFilter().type(data.dateStart)
 
-// Заполнение поля "Период действия по"
+cy.log('Заполнение поля "Период действия по"')
 ListOfGrLimits.getEndDateFilter().type('12112022')
 
-// Проверка кнопки фильтра что она разблокирована
+cy.log('Проверка кнопки фильтра что она разблокирована')
 ListOfGrLimits.getResetFilter().should('be.enabled')
 
-//Проверка текста при отсутствии результатов
+cy.log('Проверка текста при отсутствии результатов')
 cy.wait(500)
 ListOfGrLimits.getNoSearchResults().should('contain.text', 'По этому запросу ничего не найдено.')
 
-// Заполнение поля "Период действия по"
+cy.log('Заполнение поля "Период действия по"')
 ListOfGrLimits.getEndDateFilter().clear().type(data.dateEnd)
 
-// Переход в детальную страницу группового лимита
+cy.log('Переход в детальную страницу группового лимита')
 ListOfGrLimits.getGrLimitDetailPage().children().first().click()
 
-//Проверка заголовка страницы
+cy.log('Проверка заголовка страницы')
 GrLimitDetails.getHead().should('contain.text', 'Лимиты группы компаний')
 
-//Проверка названия группы
+cy.log('Проверка названия группы')
 GrLimitDetails.getGroupName().should('contain.text', data.GroupOfCompaniesNameChanged)
 
-//Проверка кода группы
+cy.log('Проверка кода группы')
 GrLimitDetails.getGrCode().should('contain.text', data.CompanyGroupCodeChanged)
 
-//Проверка кол-ва компаний
+cy.log('Проверка кол-ва компаний')
 GrLimitDetails.getCountOfCompanies().should('contain.text', '1')
 
-//Раскрыть аккордеон
+cy.log('Раскрыть аккордеон')
 GrLimitDetails.getAccordeonTab().click()
 
-//Проверка названия и ИНН компании
+cy.log('Проверка названия и ИНН компании')
 GrLimitDetails.getСomposition().should('contain.text', `[ИНН: ${data.INNLiptSoft}] ${data.NameLiptSoft}`)
 })
 

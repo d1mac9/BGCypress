@@ -36,91 +36,91 @@ it ('ChangeCompanyGr', function (){
   cy.visit( Cypress.env('urlTestStg'))
 
 
-//Авторизоваться по админом, нажать войти
+cy.log('Авторизоваться по админом, нажать войти')
 AuthPage.getLogin().type(data.fullAdmin)
 AuthPage.getSubmitButton().click()
 
-//Выбрать "Лимиты гарантий"
+cy.log('Выбрать "Лимиты гарантий"')
 Sidebar.getMenuItem().contains('Лимиты гарантий').click()
 
-//Перейти во вкладку "Группы компаний"
+cy.log('Перейти во вкладку "Группы компаний"')
 ListOfCompanyGroups.getTabGroupLimits().should('contain.text', 'Группы компаний').click()
 
-// Заполнение поля "Компания"
+cy.log('Заполнение поля "Компания"')
 ListOfCompanyGroups.getCompanyFilter().type(data.NameLiptSoft)
 
-// Заполнение поля "Название"
+cy.log('Заполнение поля "Название"')
 ListOfCompanyGroups.getGroupNameFilter().type(data.GroupOfCompaniesName)
 
-// Заполнение поля "Код"
+cy.log('Заполнение поля "Код"')
 ListOfCompanyGroups.getCodeFilter().clear().type(data.CompanyGroupCode)
 cy.wait(1000)
 
-// Переход в детальную страницу группы компаний
+cy.log('Переход в детальную страницу группы компаний')
 ContextMenu.getBtnEdit().click({force: true})
 
 
-//Нажать кнопку "Редактировать"
+cy.log('Нажать кнопку "Редактировать"')
 CompanyGrParametrs.getBtnEditGroup().click()
 
-//Проверка, что кнопка сохранить по дефолту задизейблена
+cy.log('Проверка, что кнопка сохранить по дефолту задизейблена')
 CompanyGrParametrs.getBtnEditGroup().parent().should('be.disabled')
 
-//Проверить название алерта
+cy.log('Проверить название алерта')
 CompanyGrParametrs.getAlert().should('contain.text', 'Введите название и код группы из решения об установлении лимита.')
 
-//Проверить заголовок поля "Название"
+cy.log('Проверить заголовок поля "Название"')
 CompanyGrParametrs.getLabelGrName().should('contain.text', 'Название')
 
-//Проверить наличие подсказки под полем "Название"
+cy.log('Проверить наличие подсказки под полем "Название"')
 CompanyGrParametrs.getHintGrName().should('contain.text', 'Максимум 30 символов')
 
-//Проверить заполненное название
+cy.log('Проверить заполненное название')
 CompanyGrParametrs.getGrName().should('contain.value', data.GroupOfCompaniesName)
 
-//Изменить название
+cy.log('Изменить название')
 CompanyGrParametrs.getGrName().clear().type(data.GroupOfCompaniesNameChanged)
 
-//Проверить заголовок поля "Код"
+cy.log('Проверить заголовок поля "Код"')
 CompanyGrParametrs.getLabelGrCode().should('contain.text', 'Код')
 
-//Проверить наличие подсказки под полем "Код"
+cy.log('Проверить наличие подсказки под полем "Код"')
 CompanyGrParametrs.getHintGrCode().should('contain.text', 'Максимум 10 символов')
 
-//Проверить заполненный код
+cy.log('Проверить заполненный код')
 CompanyGrParametrs.getGrCode().should('contain.value', data.CompanyGroupCode)
 
-//Изменить Код
+cy.log('Изменить Код')
 CompanyGrParametrs.getGrCode().clear().type(data.CompanyGroupCodeChanged)
 
-//Проверить заголовок поля "Причина изменения"
+cy.log('Проверить заголовок поля "Причина изменения"')
 CompanyGrParametrs.getLabelReason().should('contain.text', 'Причина изменения')
 
-//Проверить плейсхолдер поля "Причина изменения"
+cy.log('Проверить плейсхолдер поля "Причина изменения"')
 CompanyGrParametrs.getReason().should('have.attr', 'placeholder', 'Например, согласно такому-то постановлению')
 
-//Заполнить поле "Причина изменения"
+cy.log('Заполнить поле "Причина изменения"')
 CompanyGrParametrs.getReason().type('Автотест')
 
-//Нажать "Сохранить"
+cy.log('Нажать "Сохранить"')
 CompanyGrParametrs.getBtnEditGroup().click()
 
-//Нажать кнопку "Назад"
+cy.log('Нажать кнопку "Назад"')
 cy.get('.back-button-module_wrapper__2lR16').click()
 
-// Заполнение поля "Название"
+cy.log('Заполнение поля "Название"')
 ListOfCompanyGroups.getGroupNameFilter().clear().type(data.GroupOfCompaniesNameChanged)
 
-// Заполнение поля "Код"
+cy.log('Заполнение поля "Код"')
 ListOfCompanyGroups.getCodeFilter().clear().type(data.CompanyGroupCodeChanged)
 
-// Переход в детальную страницу группы компаний
+cy.log('Переход в детальную страницу группы компаний')
 ListOfCompanyGroups.getGrLimitDetailPage().children().first().click()
 
-// Проверка названия группы
+cy.log('Проверка названия группы')
 CompanyGrParametrs.getGrName().should('contain.value', data.GroupOfCompaniesNameChanged)
 
-// Проверка кода группы
+cy.log('Проверка кода группы')
 CompanyGrParametrs.getGrCode().should('contain.value', data.CompanyGroupCodeChanged)
 })
 

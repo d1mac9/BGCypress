@@ -5,7 +5,7 @@ class listOfCompanyGroups {
     }
 
     getTabGroupLimits() {
-        return cy.get('.styles--padding_1xsk2').last()
+        return cy.get('[class^=styles--header_]').last()
     }
 
     getGroupNameFilter(){
